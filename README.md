@@ -1,6 +1,6 @@
 # Tarea Torre Ajedrez
 ## Profesor: Andrés Rubio del Río
-## Alumno:
+## Alumno:Mari Carmen Ruiz García
 
 La tarea va a consistir en modelar el movimiento de una torre de ajedrez por el tablero de dicho juego.
 <div align="center">
