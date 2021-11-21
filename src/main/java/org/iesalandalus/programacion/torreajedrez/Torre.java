@@ -5,6 +5,14 @@ public class Torre
     private Color color;
     private Posicion posicion;
 
+    public Torre (){
+        color = Color.NEGRO;
+        posicion = new Posicion (8, 'h');
+    }
+
+
+
+
     public Color getColor() {
         return color;
     }
