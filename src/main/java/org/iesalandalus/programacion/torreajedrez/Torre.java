@@ -10,6 +10,16 @@ public class Torre
         posicion = new Posicion (8, 'h');
     }
 
+    public Torre (Color color){
+        if(color == Color.BLANCO){
+            posicion = new Posicion (1,'h');
+        }else if (color == Color.NEGRO)  {
+            posicion = new Posicion (8,'h');
+        }else if (color == null)
+            throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
+
+    }
+
 
 
 
