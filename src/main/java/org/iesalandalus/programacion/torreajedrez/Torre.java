@@ -20,8 +20,23 @@ public class Torre
 
     }
 
+    public Torre (Color color, char columna){
+       if (columna == 'a' || columna == 'h' ){
+           if(color == Color.BLANCO){
+               posicion = new Posicion (1,columna);
+           }
+           else if(color == Color.NEGRO){
+               posicion = new Posicion (8,columna);
+           }else if (color == null) {
+               throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
+           }
 
 
+       }else {
+           throw new IllegalArgumentException ("ERROR: Columna no válida") ;
+       }
+
+    }
 
     public Color getColor() {
         return color;
