@@ -18,13 +18,19 @@ public class Torre
             posicion = new Posicion (1,'h');
         }else if (color == Color.NEGRO)  {
             posicion = new Posicion (8,'h');
-        }else if (color == null)
+        }else if (color == null){
             throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
+        }
+        this.color=color;
 
     }
 
     public Torre (Color color, char columna){
-       if (columna == 'a' || columna == 'h' ){
+        if (color == null){
+
+            throw new NullPointerException("ERROR: No se puede asignar un color nulo.");
+        }
+        if (columna == 'a' || columna == 'h' ){
            if(color == Color.BLANCO){
                posicion = new Posicion (1,columna);
            }
@@ -38,6 +44,7 @@ public class Torre
        }else {
            throw new IllegalArgumentException ("ERROR: Columna no válida.") ;
        }
+        this.color=color;
 
     }
 
@@ -102,7 +109,7 @@ public class Torre
                 case IZQUIERDA:
                     if (color == Color.BLANCO) {
                         for (int i = 1; i <= pasos; i++) {
-                            if (columna < 'a') {
+                            if (columna > 'a') {
                                 columna--;
                             } else {
                                 throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
@@ -167,18 +174,26 @@ public class Torre
                 case ENROQUE_CORTO:
                     if (color == Color.BLANCO && columna == 'h' ){
                         posicionFinal = new Posicion (1,'f');
+                    }else {
+                        throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
                     }
                     if(color == Color.NEGRO && columna == 'h'){
                         posicionFinal = new Posicion(8, 'f');
 
+                    }else {
+                        throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
                     }
                     break;
                 case ENROQUE_LARGO:
                     if (color == Color.BLANCO && columna == 'a' ){
                         posicionFinal = new Posicion( 1, 'd');
+                    }else {
+                        throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
                     }
                     if (color == Color.NEGRO && columna == 'a'){
                         posicionFinal= new Posicion(8,'d');
+                    }else {
+                        throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
                     }
                     break;
                 default:
@@ -201,6 +216,11 @@ public class Torre
         return color == torre.color && Objects.equals(posicion, torre.posicion);
     }
 
+    @Override
+    public String toString() {
+        return "fila=" + posicion.getFila() + ", columna=" + posicion.getColumna() + ", color=" + color;
+
+    }
     @Override
     public int hashCode() {
         return Objects.hash(color, posicion);
