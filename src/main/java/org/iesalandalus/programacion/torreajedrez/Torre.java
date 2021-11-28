@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.torreajedrez;
 
+import javax.naming.OperationNotSupportedException;
+
 public class Torre
 {
     private Color color;
@@ -35,6 +37,118 @@ public class Torre
        }else {
            throw new IllegalArgumentException ("ERROR: Columna no válida") ;
        }
+
+    }
+
+    public void mover (Direccion direccion,int pasos) throws OperationNotSupportedException {
+        if (direccion == null ){
+            throw new NullPointerException("ERROR: La dirección no puede ser nula.");
+
+        }
+        if (pasos < 1 ) {
+            throw new IllegalArgumentException("ERROR: El número de pasos debe ser positivo.");
+        }
+
+        Posicion posicionFinal;
+        int fila = this.posicion.getFila();
+        char columna = this.posicion.getColumna();
+        Color color = getColor();
+        try{
+            switch (direccion){
+                case ARRIBA:
+                    if (color == Color.BLANCO) {
+                        for (int i = 1; i <= pasos; i++) {
+                            if (fila < 8) {
+                                fila++;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+                    } else if (color == Color.NEGRO) {
+                        for (int i = 1; i <= pasos; i++) {
+                            if (fila > 1) {
+                                fila--;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+                    }
+                    posicionFinal = new Posicion(fila, columna);
+                    break;
+                case ABAJO:
+                    if (color == Color.BLANCO) {
+                        for (int i = 1; i <= pasos; i++) {
+                            if (fila > 1) {
+                                fila--;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+
+                    }else if (color == Color.NEGRO){
+                        for (int i = 1; i <= pasos; i++) {
+                            if (fila < 8) {
+                                fila++;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+
+                    }
+                    posicionFinal = new Posicion(fila, columna);
+                    break;
+                case IZQUIERDA:
+                    if (color == Color.BLANCO) {
+                        for (int i = 1; i <= pasos; i++) {
+                            if (columna < 'a') {
+                                columna--;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+                    }else if (color == Color.NEGRO){
+                        for (int i = 1; i <= pasos; i++) {
+                            if (columna < 'h') {
+                                columna++;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+
+                    }
+                    posicionFinal = new Posicion(fila, columna);
+                    break;
+                case DERECHA:
+                    if (color == Color.BLANCO) {
+                        for (int i = 1; i <= pasos; i++) {
+                            if (columna < 'h') {
+                                columna++;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+                    } else {
+                        for (int i = 1; i <= pasos; i++) {
+                            if (columna > 'a') {
+                                columna--;
+                            } else {
+                                throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+                            }
+                        }
+                    }
+                    posicionFinal = new Posicion(fila, columna);
+
+
+
+                    break;
+                default:
+                    throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+            }
+
+        }catch (OperationNotSupportedException e) {
+            throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+        }
+        this.setPosicion(posicionFinal);
 
     }
 
