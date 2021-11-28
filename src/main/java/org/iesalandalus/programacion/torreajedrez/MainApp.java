@@ -8,14 +8,14 @@ public class MainApp {
 	private static Torre torre = null;
 	private static void mostrarTorre(){
 		if (torre == null){
-			System.out.print("No se ha creado torre aún");
+			System.out.println("No se ha creado torre aún");
 		}else {
-			System.out.print("Torre es "+ torre );
+			System.out.println("Torre es "+ torre );
 		}
 
 	}
 	private static void mostrarMenu(){
-		System.out.println("|| 1.Crear torre genérica(por defecto                       ||");
+		System.out.println("|| 1.Crear torre genérica (por defecto)                     ||");
 		System.out.println("|| 2.Crear torre a partir de un color                       ||");
 		System.out.println("|| 3.Crear torre a partir de un color y una columna inicial ||");
 		System.out.println("|| 4.Mover torre                                            ||");
@@ -41,9 +41,9 @@ public class MainApp {
 		}while (opcion<1 || opcion>2 );
 		Color color ;
 		if(opcion ==1 ){
-			color=Color.BLANCO;
-		}else {
 			color=Color.NEGRO;
+		}else {
+			color=Color.BLANCO;
 		}
 		return color;
 
@@ -160,8 +160,19 @@ public class MainApp {
 
 	}
 
-	public static void main(String[] args) {
-		System.out.println("kk");
+
+	public static void main(String[] args) throws OperationNotSupportedException {
+		int opcion;
+		do {
+			mostrarMenu();
+			opcion=elegirOpcion();
+			ejecutarOpcion(opcion);
+			mostrarTorre();
+
+		}while(opcion != 0);
+
+		System.out.println ("Hasta la próxima");
+
 	}
 
 
