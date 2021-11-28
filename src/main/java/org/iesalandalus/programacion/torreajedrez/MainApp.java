@@ -104,9 +104,13 @@ public class MainApp {
 				 break;
 		 }
 		 return direccion;
-		 
+
 	 }
 
+	 private static void crearTorreDefecto(){
+		torre=new Torre();
+		System.out.println("Se ha creado torre de color negro en posición 8h");
+	 }
 	public static void main(String[] args) {
 		System.out.println("kk");
 	}
