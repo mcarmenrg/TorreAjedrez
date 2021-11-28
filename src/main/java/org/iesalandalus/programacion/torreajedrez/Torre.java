@@ -49,6 +49,7 @@ public class Torre
             throw new IllegalArgumentException("ERROR: El número de pasos debe ser positivo.");
         }
 
+
         Posicion posicionFinal;
         int fila = this.posicion.getFila();
         char columna = this.posicion.getColumna();
@@ -147,6 +148,45 @@ public class Torre
 
         }catch (OperationNotSupportedException e) {
             throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+        }
+        this.setPosicion(posicionFinal);
+
+    }
+
+    public void enrocar (Direccion direccion) throws OperationNotSupportedException {
+        if (direccion == null){
+            throw new NullPointerException("ERROR: La dirección no puede ser nula.");
+        }
+        Posicion posicionFinal = null;
+        int fila = this.posicion.getFila();
+        char columna = this.posicion.getColumna();
+        Color color = getColor();
+        try {
+            switch (direccion){
+                case ENROQUE_CORTO:
+                    if (color == Color.BLANCO && columna == 'h' ){
+                        posicionFinal = new Posicion (1,'f');
+                    }
+                    if(color == Color.NEGRO && columna == 'h'){
+                        posicionFinal = new Posicion(8, 'f');
+
+                    }
+                    break;
+                case ENROQUE_LARGO:
+                    if (color == Color.BLANCO && columna == 'a' ){
+                        posicionFinal = new Posicion( 1, 'd');
+                    }
+                    if (color == Color.NEGRO && columna == 'a'){
+                        posicionFinal= new Posicion(8,'d');
+                    }
+                    break;
+                default:
+                    throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
+
+            }
+
+        }catch (OperationNotSupportedException e) {
+            throw new OperationNotSupportedException("ERROR: Movimiento de enroque no válido.");
         }
         this.setPosicion(posicionFinal);
 
