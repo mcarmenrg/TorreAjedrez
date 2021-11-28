@@ -29,6 +29,25 @@ public class MainApp {
 		return opcion;
 
 	}
+	private static Color elegirColor(){
+		int opcion;
+		System.out.println("|| 1.Negro  ||");
+		System.out.println("|| 2.Blanco ||");
+		do {
+			System.out.println("¿Qué opción eliges?");
+			opcion= Entrada.entero();
+		}while (opcion<1 || opcion>2 );
+		Color color ;
+		if(opcion ==1 ){
+			color=Color.BLANCO;
+		}else {
+			color=Color.NEGRO;
+		}
+		return color;
+
+
+
+	}
 	public static void main(String[] args) {
 		System.out.println("kk");
 	}
