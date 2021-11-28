@@ -63,6 +63,16 @@ public class MainApp {
 		return columna;
 
 	}
+	private static void mostrarMenuDirecciones(){
+		System.out.println("|| 1.ARRIBA            ||");
+		System.out.println("|| 2.ABAJO             ||");
+		System.out.println("|| 3.IZQUIERDA         ||");
+		System.out.println("|| 4.DERECHA           ||");
+		System.out.println("|| 5.ENROQUE CORTO     ||");
+		System.out.println("|| 6.ENROQUE LARGO     ||");
+
+	}
+
 	public static void main(String[] args) {
 		System.out.println("kk");
 	}
