@@ -45,7 +45,22 @@ public class MainApp {
 		}
 		return color;
 
-
+	}
+	private static char elegirColumnaInicial(){
+		char columna = 0;
+		int opcion;
+		System.out.println("|| 1.a  ||");
+		System.out.println("|| 2.h  ||");
+		do {
+			System.out.println("¿Qué opción eliges?");
+			opcion= Entrada.entero();
+		}while (opcion<1 || opcion>2 );
+		if (opcion == 1){
+			columna ='a';
+		}else if (opcion == 2){
+			columna ='h';
+		}
+		return columna;
 
 	}
 	public static void main(String[] args) {
