@@ -72,6 +72,40 @@ public class MainApp {
 		System.out.println("|| 6.ENROQUE LARGO     ||");
 
 	}
+	 private static Direccion elegirDireccion(){
+		int opcion;
+		Direccion direccion = null;
+		 do {
+			 System.out.println("¿Qué opción eliges?");
+			 opcion= Entrada.entero();
+		 }while (opcion<1 || opcion>6 );
+
+
+		 switch (opcion){
+			 case 1:
+				 direccion=Direccion.ARRIBA;
+				 break;
+			 case 2:
+				 direccion=Direccion.ABAJO;
+				 break;
+			 case 3:
+				 direccion=Direccion.IZQUIERDA;
+				 break;
+			 case 4:
+			 	direccion=Direccion.DERECHA;
+			 	break;
+			 case 5:
+				 direccion=Direccion.ENROQUE_CORTO;
+				 break;
+			 case 6:
+				 direccion=Direccion.ENROQUE_LARGO;
+				 break;
+			 default:
+				 break;
+		 }
+		 return direccion;
+		 
+	 }
 
 	public static void main(String[] args) {
 		System.out.println("kk");
