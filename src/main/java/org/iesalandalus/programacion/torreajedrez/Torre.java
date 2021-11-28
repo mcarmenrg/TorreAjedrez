@@ -1,6 +1,7 @@
 package org.iesalandalus.programacion.torreajedrez;
 
 import javax.naming.OperationNotSupportedException;
+import java.util.Objects;
 
 public class Torre
 {
@@ -35,7 +36,7 @@ public class Torre
 
 
        }else {
-           throw new IllegalArgumentException ("ERROR: Columna no válida") ;
+           throw new IllegalArgumentException ("ERROR: Columna no válida.") ;
        }
 
     }
@@ -190,6 +191,19 @@ public class Torre
         }
         this.setPosicion(posicionFinal);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Torre torre = (Torre) o;
+        return color == torre.color && Objects.equals(posicion, torre.posicion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(color, posicion);
     }
 
     public Color getColor() {
