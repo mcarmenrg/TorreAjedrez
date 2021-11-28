@@ -111,6 +111,13 @@ public class MainApp {
 		torre=new Torre();
 		System.out.println("Se ha creado torre de color negro en posición 8h");
 	 }
+
+	 private static void crearTorreColor(){
+		Color color = elegirColor();
+		torre = new Torre(color);
+		System.out.println ("Se crea una torre a partir del color");
+
+	 }
 	public static void main(String[] args) {
 		System.out.println("kk");
 	}
